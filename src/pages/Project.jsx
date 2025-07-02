@@ -1,4 +1,3 @@
-import "./style.css";
 export const Project = () => {
   return (
     <div>

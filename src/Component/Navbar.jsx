@@ -1,4 +1,3 @@
-import "./style.css";
 import homeIcon from "../assets/home.png";
 import projectIcon from "../assets/project.png";
 import aboutIcon from "../assets/about.png";

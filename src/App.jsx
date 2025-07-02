@@ -9,8 +9,8 @@ function App() {
   const pageRefference = useRef(null);
 
   return (
-    <div className=" h-200 w-200 border-2 border-soild">
-      <div className="border-red-200  border-2" ref={pageRefference}>
+    <div className="  w-screen h-screen  ">
+      <div className="" ref={pageRefference}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project" element={<Project />} />
