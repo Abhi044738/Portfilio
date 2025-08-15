@@ -4,57 +4,57 @@ import aboutIcon from "../assets/about.png";
 import { useState } from "react";
 import { motion, AnimatePresence, scale } from "motion/react";
 import { useNavigate } from "react-router-dom";
-import { animate } from "motion";
+import { tabAnimationHandler } from "./animation";
 
 const icons = [
   { name: "home", path: homeIcon },
   { name: "project", path: projectIcon },
   { name: "about", path: aboutIcon },
 ];
-const options = {
-  root: null, //goes to browser viewPort.
-  rootMargin: "0px",
-  threshold: 1.0, ///visibility 0-1 =>1 to 100%
-};
-const animtionCallBack = async (entries, observer, animationControl) => {
-  for (const entry of entries) {
-    if (entry.isIntersecting) {
-      await animationControl.start({
-        backgroundColor: ["#4ECDC4", "#ffffff", "#4ECDC4"],
-        y: ["0.5rem", "0rem"],
-        scale: [0.7, 1],
-        transition: {
-          backgroundColor: {
-            duration: 1,
-            ease: "easeOut",
-            repeat: 3,
-            repeatType: "loop",
-          },
-          y: {
-            duration: 2,
-            ease: "easeOut",
-          },
-          scale: {
-            duration: 2,
-            ease: "easeOut",
-          },
-        },
-      });
-    }
-  }
-  observer.disconnect();
-};
+// const options = {
+//   root: null, //goes to browser viewPort.
+//   threshold: 0.1, ///visibility 0-1 =>1 to 100%
+// };
+// const animtionCallBack = async (entries, observer, animationControl) => {
+//   for (const entry of entries) {
+//     if (entry.isIntersecting) {
+//       await animationControl.start({
+//         backgroundColor: ["#4ECDC4", "#ffffff", "#4ECDC4"],
+//         y: ["0.5rem", "0rem"],
+//         scale: [0.7, 1],
+//         transition: {
+//           backgroundColor: {
+//             duration: 1,
+//             ease: "easeOut",
+//             repeat: 3,
+//             repeatType: "loop",
+//           },
+//           y: {
+//             duration: 2,
+//             ease: "easeOut",
+//           },
+//           scale: {
+//             duration: 2,
+//             ease: "easeOut",
+//           },
+//         },
+//       });
+//     }
+//     observer.disconnect();
+//   }
+// };
 
-const tabAnimationHandler = (pageRefference, animationControl) => {
-  pageRefference.current?.scrollIntoView({ behavior: "smooth" });
-  const observer = new IntersectionObserver(
-    (entries, observer) =>
-      animtionCallBack(entries, observer, animationControl),
-    options
-  );
-  observer.observe(pageRefference.current);
-};
-export const Navbar = ({ pageRefference, animationControl }) => {
+// const tabAnimationHandler = (pageRefference, animationControl) => {
+//   pageRefference.current?.scrollIntoView({ behavior: "smooth" });
+//   const observer = new IntersectionObserver(
+//     (entries, observer) =>
+//       animtionCallBack(entries, observer, animationControl),
+//     options
+//   );
+//   observer.observe(pageRefference.current);
+// };
+
+export const Navbar = ({ pageRefference, animationControl, controlBorder }) => {
   const navigate = useNavigate();
   const handDragEnd = (value, event, info) => {
     const { x, y } = info.point;
@@ -109,7 +109,11 @@ export const Navbar = ({ pageRefference, animationControl }) => {
           <motion.img
             key={name}
             whileTap={() =>
-              tabAnimationHandler(pageRefference, animationControl)
+              tabAnimationHandler(
+                pageRefference,
+                animationControl,
+                controlBorder
+              )
             }
             drag
             dragSnapToOrigin

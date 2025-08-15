@@ -4,6 +4,7 @@ export const Home = () => {
   return (
     <>
       <div className="m-4">
+        <div id="border"></div>
         <div className="mt-10">
           <img
             className="rounded-[32rem] w-[12rem] m-auto "

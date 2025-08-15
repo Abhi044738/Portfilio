@@ -71,3 +71,22 @@
     }
   }
 }
+
+@layer utilities {
+  .border-custom-class {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+
+    /* animation: rotate-Border 2s infinite; */
+  }
+  /* @keyframes rotate-Border {
+    100% {
+      transform: translate(-50%, -50%) rotate(-120deg);
+    }
+  } */
+}

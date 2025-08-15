@@ -11,12 +11,14 @@ import { useAnimation } from "motion/react";
 function App() {
   const pageRefference = useRef(null);
   const control = useAnimation();
+  const controlBorder = useAnimation();
   console.log("dds" + control);
   return (
     <div className="  ">
       <HeaderComponent
         pageRefference={pageRefference}
         animationControl={control}
+        controlBorder={controlBorder}
       />
       <div>
         <Routes>
@@ -25,7 +27,11 @@ function App() {
         </Routes>
       </div>
 
-      <Navbar pageRefference={pageRefference} animationControl={control} />
+      <Navbar
+        pageRefference={pageRefference}
+        animationControl={control}
+        controlBorder={controlBorder}
+      />
       <FooterComponent />
     </div>
   );
